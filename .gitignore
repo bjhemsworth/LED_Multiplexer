@@ -1,0 +1,6 @@
+#Arduino IDE error files
+*.log
+
+# Python compilation files
+__pycache__/
+*.py[cod]
