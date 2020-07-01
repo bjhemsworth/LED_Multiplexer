@@ -5,11 +5,7 @@ image_width_in_frames = 1
 image_height_in_frames = 1
 
 ## Read in image as BGR
-image = cv.imread("colour_test.png", cv.IMREAD_COLOR)
-
-##print(len(image), len(image[0]), len(image[0][0]))
-
-##print(image)
+image = cv.imread("blue_colour_test.png", cv.IMREAD_COLOR)
 
 frames = []
 
@@ -22,11 +18,11 @@ for w in range(image_height_in_frames):
         frame_scanline_list_field1 = []
         frame_scanline_list_field2 = []
         for s, scan in enumerate(frame):
-            print(scan, "\n")
+
             output_scanline_field1 = ''
             output_scanline_field2 = ''
+
             for pixel in scan:
-                print(pixel)
                 if pixel[0] > 192:
                     B1 = '0'
                     B2 = '0'

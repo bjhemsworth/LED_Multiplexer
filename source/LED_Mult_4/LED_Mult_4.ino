@@ -11,7 +11,7 @@ union int_arr{
   uint8_t as_array[4];
 };
 
-PROGMEM const union int_arr data[n_frames][n_fields][n_scanlines] = {{{0xdb6db6fe,0xd24926fd,0xd24926fb,0xd24926f7,0xd24926ef,0xd24926df,0xd24926bf,0xdb6db67f},{0xdb6db6fe,0xdb6db6fd,0xda4936fb,0xda5b36f7,0xda5b36ef,0xda4936df,0xdb6db6bf,0xdb6db67f}}};
+PROGMEM const union int_arr data[n_frames][n_fields][n_scanlines] = {{{0xfe,0xfd,0xfb,0xf7,0xef,0xdf,0xbf,0x7f},{0xdb6924fe,0xdb6924fd,0xdb6924fb,0xdb6924f7,0xdb6924ef,0xdb6924df,0xdb6924bf,0xdb69247f}}};
 
 void setup()
 {
@@ -19,6 +19,7 @@ void setup()
     pinMode(SER, OUTPUT);
     pinMode(LAT, OUTPUT);
     pinMode(CLK, OUTPUT);
+    Serial.begin(9600);
 }
 
 int t = 0;
@@ -26,6 +27,8 @@ void loop()
 {
     union int_arr test;
     test.as_int = 0xFF20304;
+
+    int t = millis();
 
     for (int frame = 0; frame < n_frames; frame++)
     {
@@ -45,6 +48,8 @@ void loop()
             }
         }
     }
+
+    Serial.println(millis() - t);
 }
 
 void shiftOut(uint8_t dataPin, uint8_t clockPin, uint8_t val)
